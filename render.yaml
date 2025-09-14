@@ -6,7 +6,7 @@ services:
     env: python
     region: oregon          # change region if needed
     plan: free              # free or starter plan
-    pythonVersion: 3.10     # compatible with packages in requirements.txt
+    runtime: python-3.10    # correct way to set Python version
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app:app   # 'app' is your main Flask file without .py
     envVars:
