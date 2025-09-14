@@ -4,10 +4,15 @@ services:
   - type: web
     name: heart-disease-detection
     env: python
-    region: oregon  # change if you want a different region
-    plan: free      # you can use starter/free plan
+    region: oregon          # change region if needed
+    plan: free              # free or starter plan
+    pythonVersion: 3.10     # compatible with packages in requirements.txt
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app  # replace 'app' with your main Flask file name without .py
-    pythonVersion: 3.10  # compatible with updated packages
-
-
+    startCommand: gunicorn app:app   # 'app' is your main Flask file without .py
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: MONGO_URI
+        value: "<your_mongodb_connection_string_here>"   # replace with actual URI
+      - key: SECRET_KEY
+        value: "<your_secret_key_here>"                  # replace with actual secret key
