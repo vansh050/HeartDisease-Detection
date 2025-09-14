@@ -1,8 +1,13 @@
+# render.yaml
+
 services:
   - type: web
-    name: heart-disease-detector
+    name: heart-disease-detection
     env: python
-    plan: free
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:app"
+    region: oregon  # change if you want a different region
+    plan: free      # you can use starter/free plan
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app  # replace 'app' with your main Flask file name without .py
+    pythonVersion: 3.10  # compatible with updated packages
+
 
