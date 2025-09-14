@@ -6,7 +6,6 @@ services:
     env: python
     region: oregon          # change region if needed
     plan: free              # free or starter plan
-    runtime: python-3.10    # correct way to set Python version
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app:app   # 'app' is your main Flask file without .py
     envVars:
@@ -16,3 +15,5 @@ services:
         value: "<your_mongodb_connection_string_here>"   # replace with actual URI
       - key: SECRET_KEY
         value: "<your_secret_key_here>"                  # replace with actual secret key
+      - key: PYTHON_VERSION
+        value: "3.10.11"  # specify the desired Python version
